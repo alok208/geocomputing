@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Geocomputing</title>
+	<!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<!-- JavaScript Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="#"><img src="https://www.geophysik.uni-muenchen.de/research/geocomputing/geocomputing/c204_vs_africa_topo_light_1_transp.png/image" width="30" height="30"></a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="/">Home</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="https://console.dialogflow.com/api-client/demo/embedded/25f9420d-9a30-480b-9cfe-6412b48b9ee1" target="_blank">Chatbot</a>
+	        </li>
+	        <!-- <li class="nav-item dropdown">
+	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	            Dropdown
+	          </a>
+	          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+	            <li><a class="dropdown-item" href="#">Action</a></li>
+	            <li><a class="dropdown-item" href="#">Another action</a></li>
+	            <li><hr class="dropdown-divider"></li>
+	            <li><a class="dropdown-item" href="#">Something else here</a></li>
+	          </ul>
+	        </li> -->
+	        <<!-- li class="nav-item">
+	          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+	        </li> -->
+	      </ul>
+	      <!-- <form class="d-flex">
+	        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+	        <button class="btn btn-outline-success" type="submit">Search</button>
+	      </form> -->
+	    </div>
+	  </div>
+	</nav>
+
+
+	<div class="container">
+		<center style="margin: 20px;">
+			<h1>Geocomputation and Geoweb Services</h1>
+			<h2>Chatbot based Web App</h2>
+		</center>
+		<img src="https://images.squarespace-cdn.com/content/v1/549dcda5e4b0a47d0ae1db1e/1515528990663-845VGZ8QQ8A6R8B5UWNS/ke17ZwdGBToddI8pDm48kJyQMBiGWal7HNBqJSBdgcUUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2do_saY3exMn383zK-h_RFPX0RCyfzYibkZ_80XTxdXlTCjLISwBs8eEdxAxTptZAUg/compsci-scicomp-engrg.png" width="100%">
+
+		<div style="margin-top: 30px">
+			<button class="accordion">What is Geo-computation?</button>
+			<div class="panel">
+				<p>
+				  	 The art and science of solving complex spatial problems with computers
+					(www.geocomputation.org);
+				</p>
+				<p>
+					 The process of applying computing technology to geographical problems (Rees and Turton,
+					1998)
+				</p>
+				<p>
+					 The computational theory of complex socio-temporal processes (Couclelis, 1998);
+				</p>
+				<p>
+					 Geo-computation is the ways in which new computational tools and methods are used. also
+					fundamentally about the depiction of spatial process (Longley, 1998).
+				</p>
+			</div>
+
+			<button class="accordion">What is Geo-data?</button>
+			<div class="panel">
+				<p>
+					 A spatial database is a database that is optimized to store and query data
+					that is related to objects in space, including points, lines and polygons.
+				</p>
+				<p>
+					 While typical databases can understand various numeric and character
+					types of data, additional functionality needs to be added for databases to
+					process spatial data types. These are typically called geometry or feature.
+				</p>
+			</div>
+
+			<button class="accordion">What is Vector data model?</button>
+			<div class="panel">
+				<p>
+					 Advantage of the vector data format: allows precise representation of
+					points, boundaries, and linear features.
+					 useful for analysis tasks that require accurate positioning,
+					 for defining spatial relationship (i.e. the connectivity and adjacency) between coverage
+					features (topology), important for such purposes as network analysis (for example to
+					find an optimal path between two nodes in a complex transport network)
+				</p>
+				<p>
+					 Main disadvantage of vector data is that the boundaries of the resulting map
+					polygons are discrete (enclosed by well-defined boundary lines), whereas in
+					reality the map polygons may represent continuous gradation or gradual
+					change, as in soil maps.
+				</p>
+			</div>
+
+			<button class="accordion">What is Raster data model?</button>
+			<div class="panel">
+				<p>
+					 Good for representing indistinct boundaries thematic information on soil
+					types, soil moisture, vegetation, ground temperatures
+				</p>
+				<p>
+					 As reconnaissance satellites and aerial surveys use raster-based scanners,
+					the information (i.e. scanned images) can be directly incorporated into GIS
+				</p>
+				<p>
+					 The higher the grid resolution, the larger the data file is going to be
+				</p>
+			</div>
+
+			<!-- <button class="accordion">Section 3</button>
+			<div class="panel">
+			  <p>Lorem ipsum...</p>
+			</div> -->
+		</div>
+
+		
+	</div>
+
+	<section style="background-color: rgba(0, 0, 0, 0.6); height: 100px; margin-top: 30px; color: #fff; padding: 20px">
+		<center>Made by: Alok Kumar Singh</center>
+	</section>
+
+	
+
+	<style type="text/css">
+		.accordion {
+		  background-color: #eee;
+		  color: #444;
+		  cursor: pointer;
+		  padding: 18px;
+		  width: 100%;
+		  text-align: left;
+		  border: none;
+		  outline: none;
+		  transition: 0.4s;
+		}
+
+		/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+		.accordion:hover {
+		  background-color: #ccc;
+		}
+
+		/* Style the accordion panel. Note: hidden by default */
+		.panel {
+		  padding: 0 18px;
+		  background-color: white;
+		  display: none;
+		  overflow: hidden;
+		}
+	</style>
+	<script type="text/javascript">
+		var acc = document.getElementsByClassName("accordion");
+		var i;
+
+		for (i = 0; i < acc.length; i++) {
+		  acc[i].addEventListener("click", function() {
+		    /* Toggle between adding and removing the "active" class,
+		    to highlight the button that controls the panel */
+		    this.classList.toggle("active");
+
+		    /* Toggle between hiding and showing the active panel */
+		    var panel = this.nextElementSibling;
+		    if (panel.style.display === "block") {
+		      panel.style.display = "none";
+		    } else {
+		      panel.style.display = "block";
+		    }
+		  });
+		}
+	</script>
+
+</body>
+</html>
