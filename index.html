@@ -33,7 +33,7 @@
 	            <li><a class="dropdown-item" href="#">Something else here</a></li>
 	          </ul>
 	        </li> -->
-	        <<!-- li class="nav-item">
+	        <!-- li class="nav-item">
 	          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
 	        </li> -->
 	      </ul>
@@ -52,6 +52,51 @@
 			<h2>Chatbot based Web App</h2>
 		</center>
 		<img src="https://images.squarespace-cdn.com/content/v1/549dcda5e4b0a47d0ae1db1e/1515528990663-845VGZ8QQ8A6R8B5UWNS/ke17ZwdGBToddI8pDm48kJyQMBiGWal7HNBqJSBdgcUUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2do_saY3exMn383zK-h_RFPX0RCyfzYibkZ_80XTxdXlTCjLISwBs8eEdxAxTptZAUg/compsci-scicomp-engrg.png" width="100%">
+
+		<div class="container mt-5">
+			<div class="card">
+				<h5 class="card-header text-center">City Weather Update</h5>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-5">
+							<div class="card text-center" style="border: none;">
+								<!-- <div class="card-body">
+								  <h5 class="card-title">Special title treatment</h5>
+								  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+								  <a href="#" class="btn btn-primary">Go somewhere</a>
+								</div> -->
+								<div class="mb-3">
+									<center>
+										<label for="" class="form-label">Enter City Name</label>
+										<input style="width: 80%;" class="form-control form-control-lg" type="text" placeholder="" id="cityField" aria-label=".form-control-lg example">
+										<button type="button" onclick="vm.getWeather()" class="btn btn-outline-primary btn-lg mt-3">Get Weather Update</button>
+									</center>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-7">
+							<div class="card text-center" style="border: none;">
+								<!-- <div class="card-body">
+								  <h5 class="card-title">Special title treatment</h5>
+								  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+								  <a href="#" class="btn btn-primary">Go somewhere</a>
+								</div> -->
+								<div class="mainbox">
+									<div class="city"></div>
+									<div class="date"></div>
+									<div class="temp"></div>
+									<div class="weather"></div>
+									<div class="hiLow"></div>
+								</div>
+							  </div>
+						</div>
+					</div>
+				  <!-- <h5 class="card-title">Special title treatment</h5>
+				  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+				  <a href="#" class="btn btn-primary">Go somewhere</a> -->
+				</div>
+			  </div>
+		</div>
 
 		<div style="margin-top: 30px">
 			<button class="accordion">What is Geo-computation?</button>
@@ -159,8 +204,44 @@
 		  display: none;
 		  overflow: hidden;
 		}
+
+		.mainbox{
+			background: white;
+			margin: auto;
+			border-radius: 10px;
+		}
+		.mainbox .city{
+			text-align: center;
+			font-size: 2rem;
+			color: rgb(82, 82, 82);
+			/* padding-top: 20px; */
+		}
+		.mainbox .temp{
+			text-align: center;
+			font-size: 6rem;
+			/* padding-top: 20px; */
+			font-weight: 500;
+		}
+		.mainbox .date{
+			text-align: center;
+			/* padding-top: 20px; */
+			opacity: 0.7;
+			/* font-size: 1.2rem; */
+		}
+		.mainbox .weather{
+			text-align: center;
+			/* padding-top: 20px; */
+			font-size: 1.2rem;
+		}
+		.mainbox .hiLow{
+			text-align: center;
+			/* padding-top: 20px; */
+			font-size: 1.34rem;
+		}
+
 	</style>
 	<script type="text/javascript">
+		var vm=this;
 		var acc = document.getElementsByClassName("accordion");
 		var i;
 
@@ -179,6 +260,53 @@
 		    }
 		  });
 		}
+		// ////////////////////////////////////////////////////
+		const api = {
+			key: "7894e4b537169089f63bb25efb31c10c",
+			baseurl: "https://api.openweathermap.org/data/2.5/"
+		};
+		vm.getWeather = function() {
+			console.log("hello");
+			const cityName = document.querySelector("#cityField").value;
+			console.log(cityName);
+			fetch(`${api.baseurl}weather?q=${cityName}&units=metric&APPID=${api.key}`)
+			.then(weather =>{
+				return weather.json();
+			}).then(displayResult);
+		};
+		function displayResult(weather) {
+			console.log(weather);
+			let city = document.querySelector(".city");
+			city.innerText = `${weather.name}, ${weather.sys.country}`;
+
+			let now = new Date();
+			let date = document.querySelector(".date");
+			date.innerText = dateBuilder(now);
+
+			let temp = document.querySelector(".temp");
+			temp.innerHTML = `${Math.round(weather.main.temp)}<span>℃</span>`;
+			
+			let weather_el = document.querySelector(".weather");
+			weather_el.innerText = weather.weather[0].description;
+
+			let hilow = document.querySelector(".hiLow");
+			hilow.innerText = `${weather.main.temp_min}℃/${weather.main.temp_max}℃`
+			
+		}
+
+		function dateBuilder(d) {
+			var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+			var days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+			let day = days[d.getDay()];
+			let date = d.getDate();
+			let month = months[d.getMonth()];
+			let year = d.getFullYear();
+
+			return `${day} ${date} ${month} ${year}`;
+
+		}
+
 	</script>
 
 </body>
